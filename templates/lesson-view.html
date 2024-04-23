@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaterWorks Academy - Lesson View</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-blue-500 p-4 fixed top-0 left-0 right-0">
+    <div class="container mx-auto flex items-center justify-between">
+      <h1 class="text-white font-bold text-lg">WaterWorks Academy</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white hover:text-gray-200">Home</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="text-white hover:text-gray-200">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Lesson View Section -->
+  <section class="py-8 px-4">
+    <div class="container mx-auto">
+      <!-- Placeholder for lesson view -->
+      <div id="lesson-view"></div>
+    </div>
+  </section>
+
+  <!-- Include jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Script for fetching dynamic content -->
+  <script>
+    $(document).ready(function() {
+      // Placeholder for fetching lesson view dynamically
+      $.get("api/lesson-view", function(data) {
+        // Populate the lesson view section with dynamic content
+        $("#lesson-view").html(data);
+      });
+    });
+  </script>
+
+  <!-- footer.html -->
+  <footer class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 WaterWorks Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

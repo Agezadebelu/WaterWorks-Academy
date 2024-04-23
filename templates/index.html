@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaterWorks Academy</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-blue-500 p-6 fixed top-0 left-0 right-0">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="">
+          <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white text-xl font-bold">WaterWorks Academy</a>
+      </div>
+      
+      <nav>
+        <!-- Toggle button for small screens -->
+        <div class="block lg:hidden">
+            <button id="menu-toggle" class="text-white focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+              </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="block text-white py-2 px-4">Home</a>
+            <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="block text-white py-2 px-4">Courses</a>
+            <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="block text-white py-2 px-4">About</a>
+            <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="block text-white py-2 px-4">Contact</a>
+        </div>
+        <div hidden lg:flex lg:items-center lg:justify-end>
+          <ul class="flex space-x-4">
+            <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white hover:text-gray-200">Home</a></li>
+            <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
+            <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
+            <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      
+    </div>
+  </header>
+
+  <section class="">
+    <div class="site-hero iv-once visible">
+      <div class="bg-cover bg-center h-screen container" style="background-image: linear-gradient(rgba(9, 5, 54, 0.3), rgba(5, 4, 46, 0.7)), url('static/images/gerd.jpg'); background-position: center;">
+          <!-- welcome -->
+          <div id="welcome" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto flex justify-center">
+            <div class="max-w-lg mx-auto mt-8">
+              <h1 class="text-3xl font-bold text-center mt-8">Navigating the Flow of Water Engineering Education</h1>
+              <p class="text-lg text-gray-700 leading-relaxed mt-4">
+                  WaterWorks Academy is envisioned as a premier institution committed to providing comprehensive and practical training for professionals in the global water sector.
+              </p>
+              <section class="py-8 px-4">
+                <div class="container mx-auto flex justify-center">
+                  <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full mr-4">Explore Courses</a>
+                  <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/login" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Login</a>
+                </div>
+              </section>
+            </div>
+            <div class="max-w-lg mx-auto mt-8">
+              <!-- Search Bar -->
+              <div class="py-8 px-4 bg-gray-100 mt-20">
+                <div class="container mx-auto">
+                  <input type="text" placeholder="Search for courses..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500">
+                </div>
+              </div>
+              <!-- subscribe -->
+              <section class="py-8 px-4">
+                <p class="subscribe-blob__title text-white text-center">Subscribe and Follow </p>
+                <br>
+                <div class="container mx-auto flex justify-center">
+                  <a href="https://www.youtube.com/channel/UCC1w12Y_5piATIl33xWl5cg" class="bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full mr-4">Youtube</a>
+                  <a href="https:/https://www.linkedin.com/feed/" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full mr-4">LinkedIn</a>
+                  <a href="https://www.facebook.com/" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full mr-4">Facebook</a>
+                  <a href="https://discord.com/channels/@me" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full mr-4">Discord</a>
+                  <a href="https://twitter.com/home" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full mr-4">X</a>
+                </div>
+              </section>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="py-8 px-4 bg-gray-100 mt-20">
+    <div class="container mx-auto">
+      <input type="text" placeholder="Search for courses..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500">
+    </div>
+  </section>
+
+  <!-- Featured Courses -->
+  <section class="py-8 px-4">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Featured Courses</h2>
+      
+      <!-- Placeholder for featured courses -->
+      <div id="featured-courses" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="max-w-lg mx-auto mt-8">
+          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="card__image">
+              <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/MODFLOW.png" alt="Course Image">
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-5 text-blue-700">Applications of groundwater modelling in TUFLOW</h3>
+              <p class="text-gray-600">Mastering groundwater modeling for enhanced calibration; long-term simulations and operational flood forecasting.</p>
+              <div class="card__content-date text-sm text-gray-500 mt-2">Wednesday 20 Nov 2024</div>
+            </div>
+
+            <div class="p-4 bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="card__footer-item flex items-center content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>
+                  <span class="ml-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Register now</span>
+                </div>
+                <!-- Add additional footer items if needed -->
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="max-w-lg mx-auto mt-8">
+          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="card__image">
+              <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/py.png" alt="Course Image">
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-5 text-blue-700">Applications of groundwater modelling in TUFLOW</h3>
+              <p class="text-gray-600">Mastering groundwater modeling for enhanced calibration; long-term simulations and operational flood forecasting.</p>
+              <div class="card__content-date text-sm text-gray-500 mt-2">Wednesday 20 Nov 2024</div>
+            </div>
+
+            <div class="p-4 bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="card__footer-item flex items-center content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>
+                  <span class="ml-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Register now</span>
+                </div>
+                <!-- Add additional footer items if needed -->
+              </div>
+            </div>
+
+          </a>
+        </div>
+
+        <div class="max-w-lg mx-auto mt-8">
+          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="card__image">
+              <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/Groundwater-modelling-in-python-2024-600-x-600-px.png" alt="Course Image">
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-5 text-blue-700">Applications of groundwater modelling in TUFLOW</h3>
+              <p class="text-gray-600">Mastering groundwater modeling for enhanced calibration; long-term simulations and operational flood forecasting.</p>
+              <div class="card__content-date text-sm text-gray-500 mt-2">Wednesday 20 Nov 2024</div>
+            </div>
+
+            <div class="p-4 bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="card__footer-item flex items-center content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>
+                  <span class="ml-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Register now</span>
+                </div>
+                <!-- Add additional footer items if needed -->
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="max-w-lg mx-auto mt-8">
+          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="card__image">
+              <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/TUFLOW.jpeg" alt="Course Image">
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-5 text-blue-700">Applications of groundwater modelling in TUFLOW</h3>
+              <p class="text-gray-600">Mastering groundwater modeling for enhanced calibration; long-term simulations and operational flood forecasting.</p>
+              <div class="card__content-date text-sm text-gray-500 mt-2">Wednesday 20 Nov 2024</div>
+            </div>
+
+            <div class="p-4 bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="card__footer-item flex items-center content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>
+                  <span class="ml-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Register now</span>
+                </div>
+                <!-- Add additional footer items if needed -->
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="max-w-lg mx-auto mt-8">
+          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="card__image">
+              <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/TUFLOW.jpeg" alt="Course Image">
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-5 text-blue-700">Applications of groundwater modelling in TUFLOW</h3>
+              <p class="text-gray-600">Mastering groundwater modeling for enhanced calibration; long-term simulations and operational flood forecasting.</p>
+              <div class="card__content-date text-sm text-gray-500 mt-2">Wednesday 20 Nov 2024</div>
+            </div>
+
+            <div class="p-4 bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="card__footer-item flex items-center content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>
+                  <span class="ml-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Register now</span>
+                </div>
+                <!-- Add additional footer items if needed -->
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="max-w-lg mx-auto mt-8">
+          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="card__image">
+              <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/TUFLOW.jpeg" alt="Course Image">
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-xl font-bold mb-5 text-blue-700">Applications of groundwater modelling in TUFLOW</h3>
+              <p class="text-gray-600">Mastering groundwater modeling for enhanced calibration; long-term simulations and operational flood forecasting.</p>
+              <div class="card__content-date text-sm text-gray-500 mt-2">Wednesday 20 Nov 2024</div>
+            </div>
+
+            <div class="p-4 bg-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="card__footer-item flex items-center content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>
+                  <span class="ml-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Register now</span>
+                </div>
+                <!-- Add additional footer items if needed -->
+              </div>
+            </div>
+          </a>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories or Filters -->
+  <section class="py-8 px-4 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Browse by Category</h2>
+      <!-- Placeholder for categories or filters -->
+      <ul id="category-list" class="flex space-x-4"></ul>
+    </div>
+  </section>
+
+  <!-- Call-to-action Buttons -->
+  <section class="py-8 px-4">
+    <div class="container mx-auto flex justify-center">
+      <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full mr-4">Explore Courses</a>
+      <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/login" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Login</a>
+    </div>
+  </section>
+
+  <!-- Include jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Script for fetching dynamic content -->
+  <script>
+    $(document).ready(function() {
+      // Placeholder for fetching featured courses dynamically
+      $.get("api/featured-courses", function(data) {
+        // Populate the featured courses section with dynamic content
+        $("#featured-courses").html(data);
+      });
+
+      // Placeholder for fetching categories dynamically
+      $.get("api/categories", function(data) {
+        // Populate the category list with dynamic content
+        $("#category-list").html(data);
+      });
+    });
+  </script>
+
+  <!-- JavaScript to toggle mobile menu -->
+  <script>
+    // JavaScript to toggle mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  
+  <!-- footer.html -->
+  <footer class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 WaterWorks Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
