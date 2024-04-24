@@ -1,97 +1,36 @@
-<div class="bg-cover bg-center h-screen mt-0" style="background-image: linear-gradient(rgba(9, 5, 54, 0.3), rgba(5, 4, 46, 0.7)), url('static/images/gerd.jpg'); background-position: center;">
-    <!-- welcome -->
-    <div id="welcome" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-32">
-      <div class="max-w-lg mx-auto mt-8">
-        <h1 class="text-3xl font-bold text-center mt-8">Navigating the Flow of Water Engineering Education</h1>
-        <p class="text-lg text-gray-700 leading-relaxed mt-4">
-            WaterWorks Academy is envisioned as a premier institution committed to providing comprehensive and practical training for professionals in the global water sector.
-        </p>
-        <section class="py-8 px-4">
-          <div class="container mx-auto flex justify-center">
-            <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full mr-4">Explore Courses</a>
-            <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/login" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Login</a>
-          </div>
-        </section>
-      </div>
-      <div class="max-w-lg mx-auto mt-8 absolute top-12 right-0">
-        <!-- Search Bar -->
-        <div class="py-8 px-4 bg-gray-100 mt-20">
-          <div class="container mx-auto">
-            <input type="text" placeholder="Search for courses..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500">
-          </div>
-        </div>
-
-        <div>
-          <a href=":/httpwww.yos/utube.com/channel/UCC1w12Y_5piATIl33xWl5cg" class="text-blue-500">lateradeb2019@gmail.com</a>
-          <a href="https://www.linkedin.com/feed/" class="text-blue-500 block">
-            <img src="/static/images/youtube.jpg" alt="">
-          </a>
-          <a href="https://www.facebook.com/" class="text-blue-500 block">lateradeb09@gmail.com</a>
-          <a href="https://twitter.com/home" class="text-blue-500 block">agezadebelu@du.edu.et</a>
-          <a href="https://www.instagram.com/" class="text-blue-500">lateradeb2019@gmail.com</a>
-          <a href="https://discord.com/channels/@me" class="text-blue-500 block">lateradeb09@gmail.com</a>
-        </div>
-      </div>
-
+<!-- Header -->
+<header class="bg-blue-500 p-6 fixed top-0 left-0 right-0">
+  <div class="container mx-auto flex items-center justify-between">
+    <div class="">
+        <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white text-xl font-bold">WaterWorks Academy</a>
     </div>
-</div>
 
+    <nav>
+      <!-- Toggle button for small screens -->
+      <div class="block lg:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+            </svg>
+          </button>
+      </div>
 
+      <!-- Mobile Menu (hidden by default) -->
+      <div id="mobile-menu" class="hidden lg:hidden">
+          <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="block text-white py-2 px-4">Home</a>
+          <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="block text-white py-2 px-4">Courses</a>
+          <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="block text-white py-2 px-4">About</a>
+          <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="block text-white py-2 px-4">Contact</a>
+      </div>
+      <div hidden lg:flex lg:items-center lg:justify-end>
+        <ul class="flex space-x-4">
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white hover:text-gray-200">Home</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
-
- <div class="site-hero iv-once visible">
-   <img src="https://awschool.com.au/content/uploads/hero.jpg" alt="" class="site-hero__image">
-
-   <div class="site-hero__wave" aria-hidden="true"></div>
-
-   <div class="container">
-     <div class="site-hero__inner">
-       <div class="site-hero__content">
-                   <h1 class="site-hero__title">
-             Industry training for the global water sector          </h1>
-                           <p class="site-hero__description">
-              The Australian Water School is dedicated to offering practical, industry-relevant online training courses and webinars to enhance knowledge and skills in water science, technology, and management.          </p>
-                           <a href="/training/" target="_self" class="btn btn--white btn--filled">Learn more</a>
-               </div>
-
-       <div class="site-hero__subscribe hide-tablet-down">
-         <div class="subscribe-blob">
-           <div class="subscribe-blob__inner">
-             <p class="subscribe-blob__title">Subscribe and <br>stay up to speed!</p>
-             <div class="subscribe-blob__social-group">
-                             <a href="https://www.youtube.com/c/AustralianWaterSchool" target="_blank" class="subscribe-blob__social-link">
-                 <span class="social-icon">
-                   <svg class="icon"><use href="#social-youtube"></use></svg>
-                 </span>
-                 <span class="visually-hidden">YouTube</span>
-               </a>
-                                           <a href="https://www.linkedin.com/company/australian-water-school" target="_blank" class="subscribe-blob__social-link">
-                 <span class="social-icon">
-                   <svg class="icon"><use href="#social-linkedin"></use></svg>
-                 </span>
-                 <span class="visually-hidden">LinkedIn</span>
-               </a>
-                                           <a href="https://www.facebook.com/australianwaterschool" target="_blank" class="subscribe-blob__social-link">
-                 <span class="social-icon">
-                   <svg class="icon"><use href="#social-facebook"></use></svg>
-                 </span>
-                 <span class="visually-hidden">Facebook</span>
-               </a>
-                                           <a href="https://twitter.com/awschool" target="_blank" class="subscribe-blob__social-link">
-                 <span class="social-icon">
-                   <svg class="icon"><use href="#social-x"></use></svg>
-                 </span>
-                 <span class="visually-hidden">X</span>
-               </a>
-                           </div>
-             <a href="https://email.awschool.com.au/h/d/4B5A6D4D845C8B3B" target="_blank" class="btn btn--filled">Subscribe here</a>
-             <!-- <form action="https://www.createsend.com/t/subscribeerror?description=" method="post" class="subscribe-blob__form js-cm-form" id="subForm" data-id="92D4C54F0FEC16E5ADC2B1904DE9ED1AE379B6ACD4E0EBC75DEFF3D90A7D56567287F7B8DBAA8B094B637872B853EAB69ED90EB9960E644397E165284AA06433">
-               <input type="email" name="cm-bltdyk-bltdyk" autocapitalize="off" autocorrect="off" class="input input--outline js-cm-email-input" placeholder="Email Address" required>
-               <input type="submit" class="btn btn--filled js-cm-submit-button sc-jWBwVP cEZNeV" value="Subscribe">
-             </form> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+  </div>
+</header>
