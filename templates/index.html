@@ -18,6 +18,7 @@
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="text-white hover:text-gray-200">Contact</a></li>
+          <li><a href="{{ url_for('logout') }}"><i class="fa fa-power-off"></i> <strong>Logout</strong></a></li>
         </ul>
       </nav>
     </div>
@@ -37,7 +38,7 @@
           <section class="py-8 px-4">
             <div class="container mx-auto flex justify-center">
               <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full mr-4">Explore Courses</a>
-              <a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/login" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Login</a>
+              <a href="{{url_for('login')}}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full">Login</a>
             </div>
           </section>
         </div>
@@ -59,7 +60,7 @@
       <!-- Placeholder for featured courses -->
       <div id="featured-courses" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="max-w-lg mx-auto mt-8">
-          <a href="#" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+          <a href="{{url_for('enrollement')}}" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
             <div class="card__image">
               <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/MODFLOW.png" alt="Course Image">
             </div>
@@ -230,14 +231,14 @@
 
   <!-- subscribe -->
   <section class="py-8 px-8">
-    <p class="text-blue-700 font-bold">Subscribe and Follow </p>
-    
+    <p class="text-xl text-blue-700 font-bold">Subscribe and Follow </p>
     <div class="flex flex-col md:flex-row md:flex-wrap items-center text-xs mt-8">
-        <a href="https://www.youtube.com/channel/UCC1w12Y_5piATIl33xWl5cg" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Youtube</a>
-        <a href="https:/https://www.linkedin.com/feed/" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">LinkedIn</a>
-        <a href="https://www.facebook.com/ageza.debelu" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Facebook</a>
-        <a href="https://discord.com/channels/@me" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Discord</a>
-        <a href="https://twitter.com/AgezaDebelu1" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Twitter</a>
+      <img src="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/static/images/youtube.png" alt="Course Image">
+      <a href="https://www.youtube.com/channel/UCC1w12Y_5piATIl33xWl5cg" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Youtube</a>
+      <a href="https:/https://www.linkedin.com/feed/" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">LinkedIn</a>
+      <a href="https://www.facebook.com/ageza.debelu" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Facebook</a>
+      <a href="https://discord.com/channels/@me" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Discord</a>
+      <a href="https://twitter.com/AgezaDebelu1" class="px-2 bg-gray-500 hover:bg-blue-600 text-white font-bold py-2 rounded-full mb-4 md:mr-4 md:mb-0">Twitter</a>
     </div>
   </section>
 

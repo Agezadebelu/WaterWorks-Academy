@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-blue-500 p-4 fixed top-0 left-0 right-0">
+    <div class="container mx-auto flex items-center justify-between">
+      <h1 class="text-white font-bold text-lg">WaterWorks Academy</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white hover:text-gray-200">Home</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- login Section -->
+  <section class="py-8 px-4 bg-gray-100">
+    <div class="tl-auth-form--handle-display active fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-8">
+      <div class="tl-auth-form">
+        <form name="login_form" method="post" action="#" class="tl-form form-horizontal" id="tl-cms-login-form">
+          <input type="hidden" name="_track_login_form" value="1713785981" id="806071683">
+          <input type="hidden" name="_redirect_" value="" id="_redirect_">
+          <input type="hidden" name="_loginToken" value="adf4cab594ccc6a0245f1f72562e3130" id="_loginToken">
+          <input type="hidden" name="course-id" value="0" class="tl-catalog-course-id" id="course-id">
+          <input type="hidden" name="category-id" value="0" class="tl-catalog-category-id" id="category-id">
+          <input type="hidden" name="group-id" value="0" class="tl-catalog-group-id" id="group-id">
+          <input type="hidden" name="catalog-get-subscription" value="0" class="tl-catalog-get-subscription" id="catalog-get-subscription">
+          <input type="hidden" name="login-referrer" value="" id="login-referrer">
+
+          <div class="spacer mb-4">
+            <div class="control-group">
+              <label class="block">Username or email</label>
+              <div class="controls">
+                <input type="text" name="login" value="" id="tl-shared-username" placeholder="" autocomplete="on" tabindex="" class="w-full border border-gray-300 rounded-md py-2 px-3">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="spacer mb-4">
+            <div class="control-group">
+              <label class="block">Password</label>
+              <div class="controls">
+                <input type="password" name="password" value="" id="1447668694" placeholder="" autocomplete="off" tabindex="" class="w-full border border-gray-300 rounded-md py-2 px-3">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="spacer mb-8">
+            <div class="control-group">
+              <input type="submit" name="submit" value="Login" id="1267931669" data-loading-text="Logging in..." tabindex="" class="btn btn-primary btn-large bg-blue-500 text-white py-2 px-4 rounded-md cursor-pointer">
+            </div>
+          </div>
+
+          <div class="spacer mb-8 text-center">
+            <div class="control-group">
+              <div class="text-center">
+                Forgot your 
+                <a href="#" class="text-blue-500" data-select-state="auth_form_view:forgot_password">password</a>?
+              </div>
+              <div class="spacer spacer--x2 text-center">
+                <a class="text-blue-500" href="#" data-select-state="auth_form_view:social_login">Log in</a>
+                with social media
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <hr class="m-0 tl-auth-form_hr">
+      <div class="spacer--x2 text-center">
+        Don't have an account?
+        <a class="text-blue-500" href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/signup" data-select-state="auth_form_view:signup">Sign up</a>
+        for free!			
+      </div>
+    </div>
+  </section>  
+
+  <!-- footer.html -->
+  <footer class="bg-gray-800 text-white p-4 fixed bottom-0 left-0 right-0">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 WaterWorks Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

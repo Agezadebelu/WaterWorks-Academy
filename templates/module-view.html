@@ -18,16 +18,40 @@
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="text-white hover:text-gray-200">Contact</a></li>
+          <li><a href="{{ url_for('logout') }}"><i class="fa fa-power-off"></i> <strong>Logout</strong></a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- Module View Section -->
-  <section class="py-8 px-4">
-    <div class="container mx-auto">
-      <!-- Placeholder for module view -->
-      <div id="module-view"></div>
+  <section class="py-8 ">
+    <div class="container mx-auto mt-8">
+      <div class="">
+        <div class="md:flex">
+          <div class="w-full p-4 py-10">
+            <h1 class="text-xl font-semibold mb-6">Module Details</h1>
+
+            <!-- Module Information -->
+            <div class="mb-4">
+              <p class="block text-gray-700 text-sm font-bold mb-2">Module Name:</p>
+              <p class="text-gray-700 text-lg font-semibold mb-2">Module Name Placeholder</p>
+            </div>
+            <div class="mb-4">
+              <p class="block text-gray-700 text-sm font-bold mb-2">Duration:</p>
+              <p class="text-gray-700 text-lg font-semibold mb-2">Duration Placeholder</p>
+            </div>
+            <div class="mb-4">
+              <p class="block text-gray-700 text-sm font-bold mb-2">Description:</p>
+              <p class="text-gray-700 text-lg mb-2">Python has become part of the toolbox of scientists and engineers, and has numerous applications in hydrology. By mastering Python, you are able to extend data analysis and modelling capabilities far beyond what is possible with spreadsheets, GIS platforms and other standard software.</p>
+            </div>
+            <div class="mb-4">
+              <p class="block text-gray-700 text-sm font-bold mb-2">Course ID:</p>
+              <p class="text-gray-700 text-lg font-semibold mb-2">Course ID Placeholder</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

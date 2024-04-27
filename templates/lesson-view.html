@@ -18,31 +18,30 @@
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
           <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="text-white hover:text-gray-200">Contact</a></li>
+          <li><a href="{{ url_for('logout') }}"><i class="fa fa-power-off"></i> <strong>Logout</strong></a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- Lesson View Section -->
-  <section class="py-8 px-4">
-    <div class="container mx-auto">
-      <!-- Placeholder for lesson view -->
-      <div id="lesson-view"></div>
-    </div>
-  </section>
-
-  <!-- Include jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Script for fetching dynamic content -->
-  <script>
-    $(document).ready(function() {
-      // Placeholder for fetching lesson view dynamically
-      $.get("api/lesson-view", function(data) {
-        // Populate the lesson view section with dynamic content
-        $("#lesson-view").html(data);
-      });
-    });
-  </script>
+  <div class="container mx-auto py-8">
+      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="p-4">
+              <h1 class="text-2xl font-semibold mb-2">#</h1>
+              <div class="mb-4">
+                  <iframe class="w-full h-64" src="#" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="mb-4">
+                  <p class="text-gray-700">#</p>
+              </div>
+              <div>
+                  <p class="text-gray-500">Module ID: #</p>
+                  <p class="text-gray-500">Quiz ID: #</p>
+              </div>
+          </div>
+      </div>
+  </div>
 
   <!-- footer.html -->
   <footer class="bg-gray-800 text-white p-4">

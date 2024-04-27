@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment Page</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-blue-500 p-4 fixed top-0 left-0 right-0">
+    <div class="container mx-auto flex items-center justify-between">
+      <h1 class="text-white font-bold text-lg">WaterWorks Academy</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/home" class="text-white hover:text-gray-200">Home</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/courses" class="text-white hover:text-gray-200">Courses</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/about" class="text-white hover:text-gray-200">About</a></li>
+          <li><a href="https://43d8b30c-7685-468d-852c-883421391d58-00-14i1bs4a6xlxe.janeway.replit.dev/contact" class="text-white hover:text-gray-200">Contact</a></li>
+          <li><a href="{{ url_for('logout') }}"><i class="fa fa-power-off"></i> <strong>Logout</strong></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Enrollment Form -->
+  <div class="py-20 container mx-auto mt-8">
+    <div class="mt-8 max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-xl">
+
+      <div class="md:flex">
+        <div class="w-full p-4 px-6 py-10">
+          <h1 class="text-xl font-semibold mb-6">Enroll in Course</h1>
+
+          <!-- Enrollment Form -->
+          <form action="/enroll" method="POST">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="userId">
+                User ID:
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="userId" type="text" name="userId" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="courseId">
+                Course ID:
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="courseId" type="text" name="courseId" required>
+            </div>
+            <div class="mb-4">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                  Enroll
+                </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- footer.html -->
+  <footer class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 WaterWorks Academy. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
