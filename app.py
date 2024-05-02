@@ -2,35 +2,140 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for, s
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from datetime import datetime
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
-'''
-CORS(app)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://username:password@localhost/waterworks_db'  # Replace with your MySQL database URI
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# CONFIGURATION
+
+#CORS(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql5703438:39hBSZh4HF@sql5.freesqldatabase.com/sql5703438'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
+'''
 app.config[
     'JWT_SECRET_KEY'] = 'super-secret'  # Change this to a long, random string in production
 jwt = JWTManager(app)
 app.secret_key = "your_secret_key"
+'''
 
-# Dummy data for courses and enrollments
-courses = [{
-    "id": 1,
-    "name": "Introduction to Water Resources Engineering",
-    "description": "Learn the basics of water resources engineering.",
-    "duration": "4 weeks",
-    "instructor": "Dr. Smith"
-}, {
-    "id": 2,
-    "name": "Advanced Hydrology",
-    "description": "In-depth study of hydrological processes.",
-    "duration": "6 weeks",
-    "instructor": "Prof. Johnson"
-}]
 
+# MODELS
+
+class users(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  first_name = db.Column(db.String(80), unique=False, nullable=False)
+  last_name = db.Column(db.String(80), unique=False, nullable=False)
+  user_name = db.Column(db.String(80), unique=True, nullable=False)
+  email = db.Column(db.String(120), unique=True, nullable=False)
+  password = db.Column(db.String(120), unique=False, nullable=False)
+  organization =db.Column(db.String(120), unique=False, nullable=False)
+  role = db.Column(db.String(80), unique=False, nullable=False)
+
+
+  def to_json(self):
+    return {
+      "id": self.id,
+      "first_name": self.first_name,
+      "last_name": self.last_name,
+      "user_name": self.user_name,
+      "email": self.email,
+      "password": self.password,
+      "organization": self.organization,
+      "role": self.role
+    }
+
+
+class categories(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  category_name = db.Column(db.String(80), unique=False, nullable=False)
+
+
+  def to_json(self):
+    return {
+      "id": self.id,
+      "category_name": self.category_name
+    }
+
+
+class courses(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  instructor_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+  category_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+  course_name = db.Column(db.String(80), unique=False, nullable=False)
+  duration = db.Column(db.String(80), unique=False, nullable=False)
+  description = db.Column(db.String(120), unique=True, nullable=False)
+  image = db.Column(db.String(120), unique=False, nullable=False)
+
+  def to_json(self):
+    return {
+      "id": self.id,
+      "instructor_d": self.instructor_id,
+      "category_id": self.category_id,
+      "course_name": self.course_name,
+      "duration": self.duration,
+      "description": self.description,
+      "image": self.image
+    }
+
+
+class modules(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
+  module_name = db.Column(db.String(80), unique=False, nullable=False)
+  duration = db.Column(db.String(80), unique=False, nullable=False)
+  description = db.Column(db.String(120), unique=True, nullable=False)
+
+
+  def to_json(self):
+    return {
+      "id": self.id,
+      "course_id": self.course_id,
+      "module_name": self.module_name,
+      "duration": self.duration,
+      "description": self.description
+    }
+
+
+class lessons(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  module_id = db.Column(db.Integer, db.ForeignKey('module.id'), nullable=False)
+  quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'), nullable=False)
+  lesson_name = db.Column(db.String(80), unique=False, nullable=False)
+  video_url = db.Column(db.String(100), unique=False, nullable=False)
+  content = db.Column(db.String(5000), unique=False, nullable=False)
+
+
+  def to_json(self):
+    return {
+      "id": self.id,
+      "module_id": self.module_id,
+      "quiz_id": self.quiz_id,
+      "lesson_name": self.lesson_name,
+      "video_url": self.video_url,
+      "content": self.content
+    }
+
+
+class quizs(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  questions = db.Column(db.String(1000), unique=False, nullable=False)
+  answers = db.Column(db.String(1000), unique=False, nullable=False)
+  correct_answer = db.Column(db.String(1000), unique=False, nullable=False)
+
+
+  def to_json(self):
+    return {
+      "id": self.id,
+      "questions": self.questions,
+      "answers": self.answers,
+      "correct_ansewr": self.correct_answer
+    }
+
+'''
 enrollments = [
     {
         "user_id": 1,
@@ -41,26 +146,43 @@ enrollments = [
         "course_id": 2
     },
 ]
-'''
+
 # Dummy users for authentication
 users = {"user1": "password1", "user2": "password2"}
-
+'''
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  Courses = courses.query.all()
+  json_courses = list(map(lambda x: x.to_json(), Courses))
+  Categories = categories.query.all()
+  json_categories = list(map(lambda x: x.to_json(), Categories))
+  return render_template('index.html', categories=json_categories, courses=json_courses)
 
 
 @app.route('/home')
 def home():
-  return render_template('index.html')
+  Courses = courses.query.all()
+  json_courses = list(map(lambda x: x.to_json(), Courses))
+  Categories = categories.query.all()
+  json_categories = list(map(lambda x: x.to_json(), Categories))
+  return render_template('index.html', categories=json_categories, courses=json_courses)
 
 
 @app.route('/courses')
 def course_list():
-  # Placeholder for fetching course data from database
-  # courses = Course.query.all()
-  return render_template('course-list.html')
+  Courses = courses.query.all()
+  json_courses = list(map(lambda x: x.to_json(), Courses))
+  return render_template('course-list.html', courses=json_courses)
+
+
+@app.route('/category')
+def category():
+  Courses = courses.query.all()
+  json_courses = list(map(lambda x: x.to_json(), Courses))
+  Categories = categories.query.all()
+  json_categories = list(map(lambda x: x.to_json(), Categories))
+  return render_template('category.html', categories=json_categories, courses=json_courses)
 
 
 @app.route('/about')
@@ -85,12 +207,18 @@ def enrollement():
 
 @app.route('/module')
 def module():
-  return render_template('module-view.html')
+  Courses = courses.query.all()
+  json_courses = list(map(lambda x: x.to_json(), Courses))
+  Modules = modules.query.all()
+  json_modules = list(map(lambda x: x.to_json(), Modules))
+  Lessons = lessons.query.all()
+  json_lessons = list(map(lambda x: x.to_json(), Lessons))
+  return render_template('module-view.html', modules=json_modules, courses=json_courses, lessons=json_lessons)
 
 
 @app.route('/lesson')
 def lesson():
-  return render_template('lesson-view.html')
+  return render_template('lesson-view.html', lessons=lessons)
 
 
 # Error handler for 404 Not Found
@@ -119,8 +247,7 @@ def login():
       else:
         return jsonify({"error": "Invalid username or password"}), 401
     else:
-      return jsonify({"error":
-                      "Missing username or password in request data"}), 400
+      return jsonify({"error": "Missing username or password in request data"}), 400
   return render_template('login.html')
 
 

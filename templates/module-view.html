@@ -28,45 +28,29 @@
   <section class="py-8 ">
     <div class="container mx-auto mt-8">
       <div class="">
-        <div class="md:flex">
-          <div class="w-full p-4 py-10">
-            <h1 class="text-xl font-semibold mb-6">Module Details</h1>
-
-            <!-- Module Information -->
-            <div class="mb-4">
-              <p class="block text-gray-700 text-sm font-bold mb-2">Module Name:</p>
-              <p class="text-gray-700 text-lg font-semibold mb-2">Module Name Placeholder</p>
-            </div>
-            <div class="mb-4">
-              <p class="block text-gray-700 text-sm font-bold mb-2">Duration:</p>
-              <p class="text-gray-700 text-lg font-semibold mb-2">Duration Placeholder</p>
-            </div>
-            <div class="mb-4">
-              <p class="block text-gray-700 text-sm font-bold mb-2">Description:</p>
-              <p class="text-gray-700 text-lg mb-2">Python has become part of the toolbox of scientists and engineers, and has numerous applications in hydrology. By mastering Python, you are able to extend data analysis and modelling capabilities far beyond what is possible with spreadsheets, GIS platforms and other standard software.</p>
-            </div>
-            <div class="mb-4">
-              <p class="block text-gray-700 text-sm font-bold mb-2">Course ID:</p>
-              <p class="text-gray-700 text-lg font-semibold mb-2">Course ID Placeholder</p>
-            </div>
-          </div>
-        </div>
+        {% for course in courses %}
+          <h1 class="text-xl font-semibold mb-6 mt-6"> <strong>Course Name: </strong>{{ course.course_name }}</h1>
+          <p><strong>Duration:</strong> {{ course.duration }}</p>
+          <p><strong>Course Description: </strong>{{ course.description }}</p><br>
+          <h2 class="text-xl font-bold mb-5 text-blue-700">Modules:</h2>
+          <ul>
+            {% for module in modules %}
+              {% if module.course_id == course.id %}
+                <li><a href="{{ url_for('module', module_id=module.id) }}"> Module: {{ module.module_name }}</a></li>
+                <ul>
+                  {% for lesson in lessons %}
+                    {% if lesson.module_id == module.id %}
+                      <li><a href="{{ url_for('module', lesson_id=lesson.id) }}">{{ lesson.lesson_name }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endfor %}
       </div>
     </div>
   </section>
-
-  <!-- Include jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Script for fetching dynamic content -->
-  <script>
-    $(document).ready(function() {
-      // Placeholder for fetching module view dynamically
-      $.get("api/module-view", function(data) {
-        // Populate the module view section with dynamic content
-        $("#module-view").html(data);
-      });
-    });
-  </script>
 
   <!-- footer.html -->
   <footer class="bg-gray-800 text-white p-4">
