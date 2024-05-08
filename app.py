@@ -1,37 +1,38 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for, session, flash
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, logout_user, login_required, LoginManager, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
-from flask_mysqldb import MySQL
+
 
 app = Flask(__name__)
 
 
 # CONFIGURATION
 
-#CORS(app)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql5703438:39hBSZh4HF@sql5.freesqldatabase.com/sql5703438'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config['SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
 
-'''
-app.config[
-    'JWT_SECRET_KEY'] = 'super-secret'  # Change this to a long, random string in production
-jwt = JWTManager(app)
-app.secret_key = "your_secret_key"
-'''
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
 
+@login_manager.user_loader
+def load_user(user_id):
+    # since the user_id is just the primary key of our user table, use it in the query for the user
+    return users.query.get(int(user_id))
 
 # MODELS
-
-class users(db.Model):
+class users(UserMixin, db.Model):
   id = db.Column(db.Integer, primary_key=True)
   first_name = db.Column(db.String(80), unique=False, nullable=False)
   last_name = db.Column(db.String(80), unique=False, nullable=False)
-  user_name = db.Column(db.String(80), unique=True, nullable=False)
   email = db.Column(db.String(120), unique=True, nullable=False)
-  password = db.Column(db.String(120), unique=False, nullable=False)
+  password = db.Column(db.String(120), unique=False)
   organization =db.Column(db.String(120), unique=False, nullable=False)
   role = db.Column(db.String(80), unique=False, nullable=False)
 
@@ -41,7 +42,6 @@ class users(db.Model):
       "id": self.id,
       "first_name": self.first_name,
       "last_name": self.last_name,
-      "user_name": self.user_name,
       "email": self.email,
       "password": self.password,
       "organization": self.organization,
@@ -135,23 +135,11 @@ class quizs(db.Model):
       "correct_ansewr": self.correct_answer
     }
 
-'''
-enrollments = [
-    {
-        "user_id": 1,
-        "course_id": 1
-    },
-    {
-        "user_id": 2,
-        "course_id": 2
-    },
-]
 
-# Dummy users for authentication
-users = {"user1": "password1", "user2": "password2"}
-'''
-
+# ROUTES
+@app.route('/home')
 @app.route('/')
+@login_required
 def index():
   Courses = courses.query.all()
   json_courses = list(map(lambda x: x.to_json(), Courses))
@@ -160,16 +148,8 @@ def index():
   return render_template('index.html', categories=json_categories, courses=json_courses)
 
 
-@app.route('/home')
-def home():
-  Courses = courses.query.all()
-  json_courses = list(map(lambda x: x.to_json(), Courses))
-  Categories = categories.query.all()
-  json_categories = list(map(lambda x: x.to_json(), Categories))
-  return render_template('index.html', categories=json_categories, courses=json_courses)
-
-
 @app.route('/courses')
+@login_required
 def course_list():
   Courses = courses.query.all()
   json_courses = list(map(lambda x: x.to_json(), Courses))
@@ -183,26 +163,6 @@ def category():
   Categories = categories.query.all()
   json_categories = list(map(lambda x: x.to_json(), Categories))
   return render_template('category.html', categories=json_categories, courses=json_courses)
-
-
-@app.route('/about')
-def about():
-  return render_template('about.html')
-
-
-@app.route('/contact')
-def contact():
-  return render_template('contact.html')
-
-
-@app.route('/register')
-def register():
-  return render_template('register.html')
-
-
-@app.route('/enrollement')
-def enrollement():
-  return render_template('enrollement.html')
 
 
 @app.route('/module')
@@ -221,6 +181,76 @@ def lesson():
   return render_template('lesson-view.html', lessons=lessons)
 
 
+@app.route('/about')
+@login_required
+def about():
+  return render_template('about.html')
+
+
+@app.route('/contact')
+@login_required
+def contact():
+  return render_template('contact.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+  if request.method == 'POST':
+    email = request.form.get('email')
+    password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
+    user = users.query.filter_by(email=email).first()
+    # check if user actually exists
+    # take the user supplied password, hash it, and compare it to the hashed password in database
+    if not user or not password: 
+        flash('Please check your login details and try again.')
+        return redirect(url_for('login'))
+
+    # if the above check passes, then we know the user has the right credentials
+    login_user(user, remember=remember)
+    return redirect(url_for('index'))
+    #return redirect(url_for('home'))
+  return render_template('login.html')
+
+
+@app.route('/register', methods=['GET','POST'])
+def register():
+  if request.method == 'POST':
+    first_name = request.form.get('first_name')
+    last_name = request.form.get('last_name')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    organization = request.form.get('organization')
+    role = request.form.get('role')
+
+    user = users.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+
+    if user: # if a user is found, we want to redirect back to signup page so user can try again  
+        flash('Email address already exists')
+        return redirect(url_for('register'))
+
+    new_user = users()
+    new_user.first_name = first_name
+    new_user.last_name = last_name
+    new_user.email = email
+    new_user.password = password
+    new_user.organization = organization
+    new_user.role = role
+
+    db.session.add(new_user)
+    db.session.commit()
+    flash('User registered successfully')
+    return redirect(url_for('login'))
+  return render_template('register.html')
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
 # Error handler for 404 Not Found
 @app.errorhandler(404)
 def not_found_error(error):
@@ -233,104 +263,7 @@ def internal_error(error):
   return jsonify({"error": "Internal server error"}), 500
 
 
-# API endpoint for generating JWT token
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-  if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
-    data = request.json
-    if data is not None and "username" in data and "password" in data:
-      username = data.get("username")
-      password = data.get("password")
-      if username in users and users[username] == password:
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
-      else:
-        return jsonify({"error": "Invalid username or password"}), 401
-    else:
-      return jsonify({"error": "Missing username or password in request data"}), 400
-  return render_template('login.html')
-
-
-@app.route('/logout')
-def logout():
-  # Clear session data
-  session.clear()
-  # Redirect to the login page (you can customize the redirect URL)
-  return redirect(url_for('home'))
-
-"""
-# Protected API endpoints with authentication and authorization
-@app.route('/api/courses', methods=['GET', 'POST'])
-@jwt_required()
-def courses_api():
-  current_user = get_jwt_identity()
-  if current_user == "user1":
-    if request.method == 'GET':
-      return jsonify(courses)
-    elif request.method == 'POST':
-      data = request.json
-      new_course = {
-          "id": len(courses) + 1,
-          "name": data.get("name"),
-          "description": data.get("description"),
-          "duration": data.get("duration"),
-          "instructor": data.get("instructor")
-      }
-      courses.append(new_course)
-      return jsonify(new_course), 201
-  else:
-    return jsonify({"error": "Unauthorized access"}), 403
-
-
-@app.route('/api/enrollments', methods=['GET', 'POST'])
-@jwt_required()
-def enrollments_api():
-  # Implementation similar to courses_api, add authorization as needed
-  pass
-
-
-@app.route('/api/modules', methods=['GET', 'POST'])
-@jwt_required()
-def modules_api():
-  # Implementation similar to courses_api, add authorization as needed
-  pass
-
-
-
-@app.route('/course-list')
-def course_list():
-    # Placeholder for fetching course data from database
-    courses = Course.query.all()
-    return render_template('course-list.html', courses=courses)
-
-
-# Define API endpoints to retrieve dynamic content
-@app.route('/api/courses')
-def api_courses():
-    # Placeholder for fetching course data from database
-    courses = Course.query.all()
-    course_data = [{'name': course.name, 'instructor': course.instructor, 'description': course.description} for course in courses]
-    return jsonify(course_data)
-
-
-@app.route('/api/course-detail')
-def api_course_detail():
-    # Placeholder for fetching course detail data from database
-    course_detail = {'name': 'Course Name', 'instructor': 'Instructor Name', 'description': 'Course Description'}
-    return jsonify(course_detail)
-
-@app.route('/api/module-view')
-def api_module_view():
-    # Placeholder for fetching module view data from database
-    module_view = {'name': 'Module Name', 'description': 'Module Description'}
-    return jsonify(module_view)
-
-@app.route('/api/lesson-view')
-def api_lesson_view():
-    # Placeholder for fetching lesson view data from database
-    lesson_view = {'name': 'Lesson Name', 'content': 'Lesson Content'}
-    return jsonify(lesson_view)
-"""
-
 if __name__ == "__main__":
+  with app.app_context():
+    db.create_all()
   app.run(host='0.0.0.0', debug=True)
