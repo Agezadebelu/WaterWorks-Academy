@@ -10,7 +10,6 @@ app = Flask(__name__)
 
 
 # CONFIGURATION
-
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql5703438:39hBSZh4HF@sql5.freesqldatabase.com/sql5703438'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
