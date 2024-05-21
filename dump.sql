@@ -78,7 +78,7 @@ CREATE TABLE `courses` (
   PRIMARY KEY (`id`),
   KEY `instructor_id` (`instructor_id`),
   KEY `category_id` (`category_id`),
-  CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`),
   CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

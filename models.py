@@ -21,6 +21,8 @@ class users(db.Model):
   def to_json(self):
     return {
       "id": self.id,
+      "created_at": self.created_at,
+      "updated_at": self.updated_at,
       "first_name": self.first_name,
       "last_name": self.last_name,
       "user_name": self.user_name,
